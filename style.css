@@ -377,6 +377,7 @@ main {
                     }
 
                     &.right {
+                        /* FIXME: The content should be on the right */
                         text-align: right;
                     }
 
