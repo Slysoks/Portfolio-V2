@@ -16,6 +16,10 @@
     --pseudo-background-color: transparent;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -23,7 +27,10 @@ body, html {
     background-color: var(--light-color);
 
     /* The scrollbar will be over the content */
-    scrollbar-width: thin;
+    overflow-y: scroll;
+
+    /* The scrollbar will be hidden */
+    scrollbar-width: none;
 }
 
 header {
@@ -125,6 +132,7 @@ header {
                         position: absolute;
                         transition: width 0.3s;
                     }
+
                     &::before {
                         transform: translateY(-2px);
                     }
@@ -133,11 +141,10 @@ header {
                         transform: translateY(2px);
                     }
                     
-
                     &::before {left: 0;}
                     &::after {right: 0;}
 
-                    &:hover::before, &:hover::after {
+                    &.active::before, &.active::after {
                         width: 75%;
                     }
 
@@ -151,7 +158,6 @@ header {
 }
 
 main {
-    
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -172,7 +178,7 @@ main {
                 border-radius: 25px;
                 padding: 30px;
                 width: 75%;
-                height: 75%;
+                height: 50%;
                 display: flex;
 
                 & > div {
@@ -192,14 +198,36 @@ main {
                             padding: 0;
                             text-align: center;
                         }
+
+                        p {
+                            width: 100%;
+                            font-size: 1.2rem;
+                            color: var(--gray);
+                            margin: 0;
+                            padding: 0;
+                            text-align: justify;
+                        }
+
                     }
 
-                    img {
+                    .imageWrapper {
+                        overflow: hidden;
                         aspect-ratio: 1/1;
                         width: 250px;
                         height: 250px;
+                        border-radius: 25px;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 100%;
                         object-fit: cover;
-                        border-radius: 25%;
+
+                        transition: transform 0.3s;
+
+                        &:hover {
+                            transform: scale(1.6);
+                        }
                     }
                 }
 
@@ -216,5 +244,32 @@ main {
             background-color: var(--blue);
         }
 
+        &#competences {
+            background-color: var(--yellow);
+        }
+
     }
+}
+
+.arrow {
+    background-color: var(--light-color);
+    width: 60px;
+    height: 60px;
+    position: fixed;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    right: 10px;
+
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.disabled {
+    transform: rotate(360deg);
 }

@@ -11,7 +11,7 @@
     <header>
         <section class="left">
             <div class="imageWrapper">
-                <img id="profilePicture" src="./profilePicture.jpeg" alt="">
+                <img id="profilePicture" src="./img/profilePicture.jpeg" alt="">
             </div>
             <div class="nameWrapper">
                 <h1>Nathan</h1>
@@ -20,9 +20,10 @@
         </section>
         <section class="middle">
             <nav>
-                <ul class="randomLinkColorHolder">
-                    <li><a href="#presentation">Accueil</a></li>
-                    <li><a href="#apropos">&Agrave; Propos</a></li>
+                <ul>
+                    <li class="navColor">Accueil</li>
+                    <li class="navColor">&Agrave; Propos</a></li>
+                    <li class="navColor">Comp&eacute;tences</li>
                 </ul>
             </nav>
         </section>
@@ -34,11 +35,16 @@
         <section id="presentation">
             <section>
                 <div>
-                    <img src="./profilePicture.jpeg" alt="">
+                    <div class="imageWrapper">
+                        <img src="./img/profilePicture.jpeg" alt="">
+                    </div>
                     <div>
                         <h2>Nathan Boga</h2>
                         <p style="text-indent: 15px;">
-                            N&eacute; le 15 Mars 2009 &agrave; Saint-Gr&eacute;goire, Nathan Boga est un jeune &eacute;tudiant de <span id="age"></span> ans
+                            N&eacute; le 15 Mars 2009 &agrave; Saint-Gr&eacute;goire, Nathan Boga est un jeune &eacute;tudiant de
+                            <span id="age"></span> ans. Il aime le sport, principalement le tennis, les jeux vid&eacute;os
+                            et la programmation. Il est actuellement en 1&egrave;re g&eacute;n&eacute;rale au lyc&eacute;e
+                            Joliot-Curie de Rennes.
                         </p>
                     </div>
                 </div>
@@ -53,11 +59,13 @@
         <section id="apropos">
 
         </section>
+        <section id="competences">
+
+        </section>
     </main>
     <footer>
         
     </footer>
-    <div id="up"></div>
-    <div id="down"></div>
+    <div id="arrow" class="arrow"><img src="./img/up.svg"></div>
 </body>
 </html>
