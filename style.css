@@ -5,14 +5,12 @@
 }
 
 :root {
-    --light-color: #F8F7FF;
-    --card-color: #F0F0FA;
-    --dark-color: #001524;
-    --blue: #46B1C9;
-    --yellow: #F6AE2D;
-    --gray: #746D75;
-    --green: #84E296;
-    --red: #FF6F59;
+    --light-color: #F1FAEE;
+    --card-color: #ECF7E9;
+    --dark-color: #1D3557;
+    --light-blue: #A8DADC;
+    --blue: #457B9D;
+    --dark-blue: #355e77;
     --pseudo-background-color: transparent;
 }
 
@@ -44,6 +42,8 @@ header {
 
     position: fixed;
 
+    cursor: default;
+
     background-color: var(--dark-color);
     color: var(--light-color);
 
@@ -57,6 +57,9 @@ header {
         &.left, &.right {
             width: 25%;
         }
+
+        &.left {margin-left: 10px;}
+        &.right {margin-right: 10px;}
 
         &.center {
             width: 50%;
@@ -116,41 +119,41 @@ header {
             li {
                 margin: 0 10px;
 
-                a {
-                    text-decoration: none;
-                    color: var(--light-color);
-                    position: relative;
+                text-decoration: none;
+                color: var(--light-color);
+                position: relative;
 
-                    transition: color 0.3s;
+                transition: color 0.3s;
 
-                    &::before, &::after {
-                        content: '';
-                        display: block;
-                        width: 0;
-                        height: 2px;
-                        background-color: var(--pseudo-background-color);
-                        position: absolute;
-                        transition: width 0.3s;
-                    }
+                &::before, &::after {
+                    content: '';
+                    display: block;
+                    width: 0;
+                    height: 2px;
+                    background-color: var(--pseudo-background-color);
+                    width: 0;
+                    position: absolute;
+                    transition: all 0.3s;
+                }
 
-                    &::before {
-                        transform: translateY(-2px);
-                    }
+                &::before {
+                    transform: translateY(-2px);
+                }
 
-                    &::after {
-                        transform: translateY(2px);
-                    }
-                    
-                    &::before {left: 0;}
-                    &::after {right: 0;}
+                &::after {
+                    transform: translateY(2px);
+                }
+                
+                &::before {left: 0;}
+                &::after {right: 0;}
 
-                    &.active::before, &.active::after {
-                        width: 75%;
-                    }
+                &.active::before, &.active::after {
+                    width: 50%;
+                    transition: all 0.3s;
+                }
 
-                    &::before {
-                        margin-bottom: 5px;
-                    }
+                &::before {
+                    margin-bottom: 5px;
                 }
             }
         }
@@ -163,10 +166,11 @@ main {
     gap: 0;
 
     section {
-        width: 100%; height: calc(100vh - 100px);
+        width: 100%; height: calc(100vh);
 
         &#presentation {
             padding-top: 100px;
+            height: calc(100vh - 100px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -232,7 +236,7 @@ main {
                 }
 
                 box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1),
-                            -12px -12px 12px rgba(255, 255, 255, 1);
+                            -12px -12px 12px #fafcf9;
 
             }
 
@@ -241,11 +245,15 @@ main {
         }
 
         &#apropos {
-            background-color: var(--blue);
+            background-color: var(--light-blue);
         }
 
         &#competences {
-            background-color: var(--yellow);
+            background-color: var(--blue);
+        }
+
+        &#projets {
+            background-color: var(--dark-blue);
         }
 
     }
@@ -267,9 +275,42 @@ main {
 
     right: 10px;
 
-    transition: transform 0.3s, filter 0.3s;
+    transition: transform 0.2s;
 }
 
 .disabled {
     transform: rotate(360deg);
+}
+
+.socials {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+
+    a {
+        width: 30px;
+        height: 30px;
+        padding: 10px;
+
+        transition: transform 0.3s ease-in-out, filter 0.2s;
+        filter: grayscale(1);
+
+        &.github {
+            filter: invert(0);
+            &:hover {
+                filter: invert(1);
+            }
+        }
+
+        &:hover {
+            transform: scale(1.2);
+            filter: grayscale(0);
+        }
+    }
+
+    img {
+        width: 30px;
+        height: 30px;
+    }
 }

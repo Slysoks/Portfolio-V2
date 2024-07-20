@@ -2,20 +2,23 @@ function navLinkColor() {
     let li = document.querySelectorAll('.navColor');
 
     let colors = [
-        'F8F7FF',
-        '46B1C9',
-        'F6AE2D',
-        '84E296',
-        'FF6F59'
+        'F1FAEE',
+        'A8DADC',
+        '457B9D',
+        '4f66a3',
+        'E63946'
     ];
 
-    let links = [];
-
     li.forEach((element, index) => {
-        if (index === window.scrollY / window.innerHeight) {
-            element.style.color = `#${colors[index]}`;
+        if (index === Math.round(window.scrollY / window.innerHeight)) {
+
+
+            element.style.setProperty('--pseudo-background-color', `#${colors[index]}`);
+            element.classList.add('active');
         } else {
             element.style.color = 'white';
+            element.style.setProperty('--pseudo-background-color', 'transparent');
+            element.classList.remove('active');
         }
     });
 
@@ -40,6 +43,8 @@ window.addEventListener('mousemove', function (e) {
 
     if (this.window.innerWidth - e.clientX > 85 || e.clientY < 125) {
         arrow.style.display = 'none';
+        arrow.style.transform = 'rotate(-90deg)';
+        return;
     } else {
         arrow.style.display = 'flex';
     }
@@ -55,7 +60,7 @@ window.addEventListener('mousemove', function (e) {
 
 });
 
-document.getElementById('arrow').addEventListener('click', function () {
+document.getElementById('arrow').addEventListener('click', async function () {
     let arrow = document.getElementById('arrow');
 
     let currentSection = window.scrollY / window.innerHeight;
@@ -68,24 +73,30 @@ document.getElementById('arrow').addEventListener('click', function () {
         });
     } else {
         window.scrollTo({
-            top: (currentSectionIndex - 1) * window.innerHeight -100,
+            top: (currentSectionIndex - 1) * window.innerHeight - 100,
             behavior: 'smooth'
         });
     }
 
-    checkArrowRotation();
-
+    navLinkColor();
 });
 
 function checkArrowRotation() {
     let arrow = document.getElementById('arrow');
     let currentSectionIndex = Math.round(window.scrollY / window.innerHeight);
 
+    console.log(event);
+
     if (currentSectionIndex === 0) arrow.style.transform = 'rotate(180deg)';
+    else if (currentSectionIndex === 3) arrow.style.transform = 'rotate(0deg)';
+    // Check if event is defined before accessing event.clientY
     else if (event.clientY > (this.window.innerHeight + 100) / 2) arrow.style.transform = 'rotate(180deg)';
     else arrow.style.transform = 'rotate(0deg)';
-    navLinkColor();
 }
+
+document.addEventListener('scroll', function () {
+    navLinkColor();
+});
 
 navLinkColor();
 setAge();
