@@ -6,7 +6,7 @@
 
 :root {
     --light-color: #F1FAEE;
-    --card-color: #ECF7E9;
+    --card-color: #ecfdfd;
     --dark-color: #1D3557;
     --light-blue: #A8DADC;
     --blue: #457B9D;
@@ -50,6 +50,15 @@ body, html {
     justify-content: center;
     align-items: center;
 
+    transition: transform 0.3s;
+
+    h1::after {
+        position: absolute;
+        content: '';
+        animation: loadingDotsAnimation 2s infinite;
+        margin-left: 2px;
+    }
+
     img {
         aspect-ratio: 1/1;
         width: 50px;
@@ -70,6 +79,8 @@ header {
     align-items: center;
 
     position: fixed;
+
+    z-index: 100;
 
     background-color: var(--dark-color);
     color: var(--light-color);
@@ -391,6 +402,7 @@ main {
 
                             & > div {
                                 rotate: 180deg;
+                                z-index: 1;
                             }
                         }
                     }
@@ -431,6 +443,34 @@ main {
 
         &:nth-child(4) {
             background-color: var(--dark-blue);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+
+            & > div {
+                background-color: var(--card-color);
+                display: flex;
+                flex-direction: column;
+                width: 20%;
+                height: 75%;
+                padding: 15px 30px;
+                border-radius: 25px;
+
+                &.siteweb {transform: translate(0, -25px);}
+                &.spacey {transform: translate(0, 25px);}
+
+                & > div {
+                    text-indent: 30px;
+
+                    & > h3 {
+
+                    }
+
+                }
+            }
+
         }
     }
 }
@@ -464,5 +504,23 @@ main {
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes loadingDotsAnimation {
+    0% {
+        content: '';
+    }
+    25% {
+        content: '.';
+    }
+    50% {
+        content: '..';
+    }
+    75% {
+        content: '...';
+    }
+    100% {
+        content: '';
     }
 }

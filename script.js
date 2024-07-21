@@ -125,5 +125,5 @@ window.addEventListener('load', function () {
         percentageBars[index].style.width = value;
     });
 
-    document.getElementById('loadingScreen').style.display = 'none';
+    document.getElementById('loadingScreen').style.transform = 'translateY(-100%)';
 });
