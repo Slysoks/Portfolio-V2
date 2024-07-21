@@ -377,8 +377,22 @@ main {
                     }
 
                     &.right {
-                        /* FIXME: The content should be on the right */
                         text-align: right;
+                        align-items: flex-end;
+
+                        & > div {
+                            display: flex;
+                            flex-direction: column;
+
+                            & > h3 {
+                                display: flex;
+                                flex-direction: row-reverse;
+                            }
+
+                            & > div {
+                                rotate: 180deg;
+                            }
+                        }
                     }
 
                     & > div {
