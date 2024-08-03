@@ -585,21 +585,19 @@ footer {
         height: 50vh;
     }
 
+    main #competences {
+        height: 100vh;
+        & h2 {
+            text-align: left;
+        }
+    }
+
     main #projets {
         height: 275vh;
     }
 
     main #projets > div {
         max-width: 80%;
-    }
-}
-
-@keyframes loadingAnimation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
     }
 }
 
