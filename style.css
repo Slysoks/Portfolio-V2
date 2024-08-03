@@ -1,7 +1,7 @@
 /* -- IMPORT LOCAL FONTS -- */
 @font-face {
     font-family: 'Montserrat';
-    src: url('./fonts/Montserrat-Regular.ttf') format('truetype');
+    src: url('./fonts/Montserrat-Regular.ttf');
 }
 
 :root {
